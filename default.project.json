@@ -1,0 +1,14 @@
+{
+  "name": "messenger",
+  "tree": {
+    "$className": "DataModel",
+    
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      
+      "Messenger": {
+        "$path": "src"
+      }
+    }
+  }
+}
