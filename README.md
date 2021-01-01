@@ -76,4 +76,26 @@ getServersTopic:subscribe(function(message)
     thread:send()
 end)
 ```
+## How it works
 This is all useful, but if you're wondering how threads work, allow me to explain them for you: When a message is sent through a topic, the topic will create a thread ID. This unique string can be used for any other server to reply to the message. Each message holds the server's information, the message's data, and the thread ID for any replies. the `createThread` function simply creates a thread object from the thread ID returned by the `send` function. When the topic recieves a message, it'll fire the message event, which will invoke all the subscribtion functions. It will also check to see if the thread ID is a response to an earlier message. If so, then it'll call the thread object's `handleMessage` function, which will handle any thread-related stuff and fire its message event.
+
+Here is the structure of a message as it is sent through messaging service. Note that it is in the form of an array.
+```lua
+{
+    {placeId, jobId},
+    threadId,
+    message
+}
+```
+Here is the structure of a message as it is presented to callbacks and other functions. Note that it is in the form of a dictionary.
+```lua
+{
+    server = {              -- data about the server that sent the message
+        placeId = placeId,  -- the place ID of the server
+        jobId = jobId       -- the job ID of the server
+    },
+    
+    threadId = threadId,    -- the thread ID of the message
+    message = message       -- the message's data
+}
+```
