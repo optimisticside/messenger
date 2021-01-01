@@ -45,7 +45,7 @@ We can listen for messages through this topic by using the `subscribe` function,
 ```lua
 playerJoinTopic:subscribe(function(message)
     print("Player joined!")
-    print("User ID:", message.message)
+    print("User ID:", message.data)
     print("PlaceID:", message.server.placeId)
     print("Job ID:", message.server.jobId)
 end)
@@ -82,9 +82,9 @@ This is all useful, but if you're wondering how threads work, allow me to explai
 Here is the structure of a message as it is sent through messaging service. Note that it is in the form of an array.
 ```lua
 {
-    {placeId, jobId},
-    threadId,
-    message
+    {placeId, jobId},       -- data about the server that sent the message
+    threadId,               -- the thread ID of the message
+    data                    -- the message's data
 }
 ```
 Here is the structure of a message as it is presented to callbacks and other functions. Note that it is in the form of a dictionary.
@@ -96,6 +96,6 @@ Here is the structure of a message as it is presented to callbacks and other fun
     },
     
     threadId = threadId,    -- the thread ID of the message
-    message = message       -- the message's data
+    data = data             -- the message's data
 }
 ```
