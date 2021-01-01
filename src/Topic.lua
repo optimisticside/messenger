@@ -111,6 +111,11 @@ function Topic.new(server: table, name: string): table
         return self:handleMessage(message.Data)
     end)
 
+    -- add topic to server
+    if server then
+        server.topics[name] = self
+    end
+
     return self
 end
 

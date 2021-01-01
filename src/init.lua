@@ -20,16 +20,8 @@ end
 -- @param topicName the name of the topic
 -- @returns the topic
 function Server:getTopic(topicName: string): table
-    -- get the existing topic (if exists)
-    local topic = self.topics[topicName]
-
-    -- create topic if it doesn't exist
-    if not topic then
-        topic = Topic.new(self, topicName)
-        self.topics[topicName] = topic
-    end
-
-    -- return the topic
+    -- create and return topic
+    local topic = Topic.new(self, topicName)
     return topic
 end
 
