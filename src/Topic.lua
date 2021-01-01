@@ -28,7 +28,7 @@ end
 -- @param threadId the optional thread ID of the message (used internally)
 -- @returns the thread ID of the created thread (if not provided)
 function Topic:send(data: any, threadId: string?): string
-    -- generate thread if if not already provided
+    -- generate thread if not already provided
     threadId = threadId or self:generateThreadId()
 
     if threadId then
@@ -40,16 +40,16 @@ end
 
 -- Creates a topic thread in the topic
 -- @param threadId the thread ID of the thread to be created
--- @returns the created trhead
+-- @returns the created thread
 function Topic:createThread(threadId: string): table
     -- create and return thread
     local thread = TopicThread.new(self, threadId)
     return thread
 end
 
--- Handles an incomming message in the topic
+-- Handles an incoming message in the topic
 -- Runs any topic connections and thread connections
--- @param data the incomming message data
+-- @param data the incoming message data
 function Topic:handleMessage(data: any): nil
     -- unpack data
     local serverFrom, threadId, message = table.unpack(data)

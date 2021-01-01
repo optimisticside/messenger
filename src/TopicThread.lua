@@ -16,9 +16,9 @@ function TopicThread:send(data: any): string
     return self.topic:send(data, self.threadId)
 end
 
--- Handles an incomming message in the thread
+-- Handles an incoming message in the thread
 -- Runs any connections
--- @param data the incomming message data
+-- @param data the incoming message data
 function TopicThread:handleMessage(dataTable: any): nil
     -- fire message event
     self._onMessage:Fire(dataTable)
