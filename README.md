@@ -3,7 +3,7 @@
 Messenger is a lightweight, minimal library that allows for seamless cross-server messaging on the Roblox platform. It's comprised of topics, which are like channels for servers to communicate in. These topics should each have their own specific use. Topics can be used to listen for data, and send data. Topic threads can be used to create a stream of messages between servers for a specific reason.
 
 ## Usage
-Messenger is a fully object-oriented library. It's main class is called `Server`, which is a messaging server. It doesn't provide much functionality, but provides similar functions as you would find in Roblox's built-in `MessagingService`.  A message server can be created as follows. 
+Messenger is a fully object-oriented library. Its main class is called `Server`, which is a messaging server. It doesn't provide much functionality, but provides similar functions as you would find in Roblox's built-in `MessagingService`.  A message server can be created as follows. 
 ```lua
 local messageServer = Server.new()
 ```
@@ -15,7 +15,7 @@ local SERVER_START_TOPIC = "ServerStart"
 -- we do not need to provide any data, as this server's info is automatically provided by messenger
 messageServer:publish(SERVER_START_TOPIC)
 ```
-You can listen for data in a topic by subscribing to it, which can be done using the `subscribe` function. It takes the name of the topic to subscribe to, along with a callback function to be executed every time data is sent. It returns a `RBXScriptConnection`, and can be disconnected when needed.
+You can listen for data in a topic by subscribing to it, which can be done using the `subscribe` function. It takes the name of the topic to subscribe to, along with a callback function to be executed every time data is sent. It returns an `RBXScriptConnection`, and can be disconnected when needed.
 ```lua
 -- subscribe to topic
 messageServer:subscribe(SERVER_START_TOPIC, function(message)
@@ -25,7 +25,7 @@ messageServer:subscribe(SERVER_START_TOPIC, function(message)
 end)
 ```
 ## Topic
-A topic is a channel of communication between servers. A topic can be accessed by the `getTopic` function of the `Server` class, or just constructing it through it's class table.
+A topic is a channel of communication between servers. A topic can be accessed by the `getTopic` function of the `Server` class, or just constructing it through its class table.
 ```lua
 local PLAYER_JOIN_TOPIC = "PlayerJoin"
 
@@ -65,7 +65,7 @@ local listener = thread:subscribe(function(message)
     print(message.server.placeId, " - ", message.server.jobId)
 end)
 ```
-We can reply to a message by using threads as well. The explaination is below.
+We can reply to a message by using threads as well. The explanation is below.
 ```lua
 -- subscribe to the topic
 getServersTopic:subscribe(function(message)
@@ -77,7 +77,7 @@ getServersTopic:subscribe(function(message)
 end)
 ```
 ## How it works
-This is all useful, but if you're wondering how threads work, allow me to explain them for you: When a message is sent through a topic, the topic will create a thread ID. This unique string can be used for any other server to reply to the message. Each message holds the server's information, the message's data, and the thread ID for any replies. the `createThread` function simply creates a thread object from the thread ID returned by the `send` function. When the topic recieves a message, it'll fire the message event, which will invoke all the subscribtion functions. It will also check to see if the thread ID is a response to an earlier message. If so, then it'll call the thread object's `handleMessage` function, which will handle any thread-related stuff and fire its message event.
+This is all useful, but if you're wondering how threads work, allow me to explain them for you: When a message is sent through a topic, the topic will create a thread ID. This unique string can be used for any other server to reply to the message. Each message holds the server's information, the message's data, and the thread ID for any replies. the `createThread` function simply creates a thread object from the thread ID returned by the `send` function. When the topic receives a message, it'll fire the message event, which will invoke all the subscription functions. It will also check to see if the thread ID is a response to an earlier message. If so, then it'll call the thread object's `handleMessage` function, which will handle any thread-related stuff and fire its message event.
 
 Here is the structure of a message as it is sent through messaging service. Note that it is in the form of an array.
 ```lua
