@@ -40,11 +40,8 @@ end
 -- @param threadId the thread ID of the thread to be created
 -- @returns the created trhead
 function Topic:createThread(threadId: string): table
-    -- create thread
+    -- create and return thread
     local thread = TopicThread.new(self, threadId)
-
-    -- add thread to table and return it
-    self.threads[threadId] = thread
     return thread
 end
 

@@ -51,6 +51,11 @@ function TopicThread.new(topic: table, threadId: string): table
     self._onMessage = Instance.new("BindableEvent")
     self.onMessage = self._onMessage.Event
 
+    -- add thread to topic
+    if topic then
+        topic.threads[threadId] = self
+    end
+
     return self
 end
 
