@@ -40,7 +40,7 @@ function TopicThread.new(topic: table, threadId: string): table
 
     -- check if topic thread already exists
     if topic and topic.threads[threadId] then
-        return topic.topics[threadId]
+        return topic.threads[threadId]
     end
 
     -- set up fields
