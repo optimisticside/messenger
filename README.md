@@ -1,4 +1,5 @@
-# Messenger
+<center><img src="https://raw.githubusercontent.com/optimisticside/messenger/master/img/logo.png" width="50%" height="50%"></center>
+
 Messenger is a lightweight, minimal library that allows for seamless cross-server messaging on the Roblox platform. It's comprised of topics, which are like channels for servers to communicate in. These topics should each have their own specific use. Topics can be used to listen for data, and send data. Topic threads can be used to create a stream of messages between servers for a specific reason.
 
 ## Usage
