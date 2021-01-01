@@ -66,6 +66,7 @@ function Server.new(): table
     setmetatable(self, Server)
 
     -- set up fields
+    self.topics = {}
     self.placeId = game.PlaceId
     self.jobId = game.JobId
 

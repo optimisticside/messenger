@@ -95,6 +95,11 @@ function Topic.new(server: table, name: string): table
     local self = {}
     setmetatable(self, Topic)
 
+    -- check if topic already exists
+    if server and server.topics[name] then
+        return server.topics[name]
+    end
+
     -- set up fields
     self.name = name
     self.server = server
