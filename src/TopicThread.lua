@@ -38,6 +38,11 @@ function TopicThread.new(topic: table, threadId: string): table
     local self = {}
     setmetatable(self, TopicThread)
 
+    -- check if topic thread already exists
+    if topic and topic.threads[threadId] then
+        return topic.topics[threadId]
+    end
+
     -- set up fields
     self.topic = topic
     self.threadId = threadId
