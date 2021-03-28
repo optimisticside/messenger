@@ -18,7 +18,7 @@ function Topic:publish(data: any): nil
 end
 
 -- Generates a unique thread ID
--- @returns the created thread iID
+-- @returns the created thread ID
 function Topic:generateThreadId(): string
     return self.server.jobId .. "-" .. tostring(#self.threads + 1)
 end
