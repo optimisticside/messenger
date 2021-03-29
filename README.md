@@ -3,6 +3,9 @@
 Messenger is a lightweight, minimal library that allows for seamless cross-server messaging on the Roblox platform. It's comprised of topics, which are like channels for servers to communicate in. These topics should each have their own specific use. Topics can be used to listen for data, and send data. Topic threads can be used to create a stream of messages between servers for a specific reason.
 
 ## Usage
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cfb5a6457be64569a0a7b884da0d791c)](https://app.codacy.com/gh/optimisticside/messenger?utm_source=github.com&utm_medium=referral&utm_content=optimisticside/messenger&utm_campaign=Badge_Grade_Settings)
+
 Messenger is a fully object-oriented library. Its main class is called `Server`, which is a messaging server. It doesn't provide much functionality, but provides similar functions as you would find in Roblox's built-in `MessagingService`.  A message server can be created as follows. 
 ```lua
 local messageServer = Server.new()
